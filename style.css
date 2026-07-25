@@ -121,3 +121,31 @@ button:hover {
   flex-direction: column;
   gap: 6px;
 }
+
+.customer-name-field {
+  max-width: 300px;
+  margin-bottom: 16px;
+}
+
+.customer-name-field input {
+  padding: 6px;
+  font-size: 14px;
+}
+
+.payment-info {
+  margin-top: 24px;
+  padding: 16px;
+  background: #f0f7f0;
+  border: 1px solid #cde3cd;
+  border-radius: 6px;
+}
+
+.payment-info h2 {
+  margin-top: 0;
+  font-size: 16px;
+}
+
+.payment-note {
+  font-style: italic;
+  color: #444;
+}
