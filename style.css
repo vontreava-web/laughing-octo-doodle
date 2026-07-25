@@ -149,3 +149,22 @@ button:hover {
   font-style: italic;
   color: #444;
 }
+
+.copy-section {
+  margin-top: 20px;
+}
+
+.copy-hint {
+  font-size: 13px;
+  color: #666;
+  margin: 6px 0;
+}
+
+.copy-output {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 8px;
+  font-family: monospace;
+  font-size: 13px;
+  margin-top: 8px;
+}

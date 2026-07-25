@@ -23,6 +23,9 @@ const orderBody = document.getElementById("orderBody");
 const totalShirtsEl = document.getElementById("totalShirts");
 const totalPriceEl = document.getElementById("totalPrice");
 const addBtn = document.getElementById("addBtn");
+const customerNameInput = document.getElementById("customerName");
+const copyBtn = document.getElementById("copyBtn");
+const copyOutput = document.getElementById("copyOutput");
 
 let orderLines = [];
 
@@ -122,7 +125,63 @@ function updateGrandTotals() {
   totalPriceEl.textContent = totalPrice.toFixed(2);
 }
 
+function buildOrderText() {
+  const name = customerNameInput.value.trim() || "(name not entered)";
+  const totalShirts = orderLines.reduce((sum, line) => sum + line.quantity, 0);
+  const totalPrice = orderLines.reduce(
+    (sum, line) => sum + line.quantity * line.priceEach,
+    0
+  );
+
+  const lines = [
+    "Grant-Byerly Family Reunion T-Shirt Order",
+    `Customer: ${name}`,
+    "",
+    "Items:",
+  ];
+
+  if (orderLines.length === 0) {
+    lines.push("  (no items added yet)");
+  } else {
+    orderLines.forEach((line) => {
+      const lineTotal = (line.priceEach * line.quantity).toFixed(2);
+      lines.push(
+        `  - ${line.generation}, Size ${line.size}, Qty ${line.quantity} @ $${line.priceEach.toFixed(2)} = $${lineTotal}`
+      );
+    });
+  }
+
+  lines.push(
+    "",
+    `Grand Total Shirts: ${totalShirts}`,
+    `Grand Total Price: $${totalPrice.toFixed(2)}`,
+    "",
+    "Payment: Zelle 2147898868 or Cash App $edisongrant",
+    "Please note \"T-shirt order\" with your payment."
+  );
+
+  return lines.join("\n");
+}
+
+async function copyOrderText() {
+  const text = buildOrderText();
+  copyOutput.value = text;
+
+  try {
+    await navigator.clipboard.writeText(text);
+    copyBtn.textContent = "Copied!";
+  } catch (err) {
+    copyOutput.select();
+    copyBtn.textContent = "Select the text below and copy manually";
+  }
+
+  setTimeout(() => {
+    copyBtn.textContent = "Copy Order as Text";
+  }, 2000);
+}
+
 populateGenerationDropdown();
 populateLegend();
 populateQuantityDropdown();
 addBtn.addEventListener("click", addOrderLine);
+copyBtn.addEventListener("click", copyOrderText);
