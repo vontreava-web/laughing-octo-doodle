@@ -26,6 +26,9 @@ const addBtn = document.getElementById("addBtn");
 const customerNameInput = document.getElementById("customerName");
 const copyBtn = document.getElementById("copyBtn");
 const copyOutput = document.getElementById("copyOutput");
+const emailBtn = document.getElementById("emailBtn");
+
+const ORDER_EMAIL = "Vontreava1@outlook.com";
 
 let orderLines = [];
 
@@ -180,8 +183,18 @@ async function copyOrderText() {
   }, 2000);
 }
 
+function emailOrder() {
+  const name = customerNameInput.value.trim() || "Customer";
+  const subject = `Grant-Byerly Family Reunion T-Shirt Order - ${name}`;
+  const body = buildOrderText();
+
+  const mailtoUrl = `mailto:${ORDER_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  window.location.href = mailtoUrl;
+}
+
 populateGenerationDropdown();
 populateLegend();
 populateQuantityDropdown();
 addBtn.addEventListener("click", addOrderLine);
 copyBtn.addEventListener("click", copyOrderText);
+emailBtn.addEventListener("click", emailOrder);

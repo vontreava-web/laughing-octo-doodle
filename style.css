@@ -154,6 +154,10 @@ button:hover {
   margin-top: 20px;
 }
 
+.copy-section button {
+  margin-right: 8px;
+}
+
 .copy-hint {
   font-size: 13px;
   color: #666;
