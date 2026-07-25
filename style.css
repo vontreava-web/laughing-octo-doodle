@@ -25,6 +25,13 @@ h1 {
   line-height: 1.4;
 }
 
+.instruction-note {
+  background: #eef4fc;
+  border-left: 3px solid #2b6cb0;
+  padding: 8px 12px;
+  font-size: 14px;
+}
+
 .legend {
   list-style: none;
   padding: 0;
