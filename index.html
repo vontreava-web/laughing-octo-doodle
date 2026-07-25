@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Grant-Byerly Family Reunion T-Shirt Order Form</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="container">
+    <h1>Grant-Byerly Family Reunion T-Shirt Order Form</h1>
+
+    <p class="intro">
+      Each shirt color represents a different generation! Pick your generation
+      (color), size, and quantity below, then add it to your order. You can add
+      as many lines as you like before checking your totals.
+    </p>
+
+    <ul id="legend" class="legend">
+      <!-- Filled in automatically from the generation list in script.js -->
+    </ul>
+
+    <div class="field customer-name-field">
+      <label for="customerName">Customer Name</label>
+      <input type="text" id="customerName" placeholder="Enter your full name">
+    </div>
+
+    <div class="order-form">
+      <div class="field">
+        <label for="generation">Generation</label>
+        <select id="generation"></select>
+      </div>
+
+      <div class="field">
+        <label for="size">Size</label>
+        <select id="size">
+          <option value="S">Small (S)</option>
+          <option value="M">Medium (M)</option>
+          <option value="L">Large (L)</option>
+          <option value="XL">X-Large (XL)</option>
+          <option value="XXL">XX-Large (XXL)</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label for="quantity">Quantity</label>
+        <select id="quantity"></select>
+      </div>
+
+      <button id="addBtn" type="button">Add to Order</button>
+    </div>
+
+    <table class="order-table">
+      <thead>
+        <tr>
+          <th>Generation</th>
+          <th>Size</th>
+          <th>Qty</th>
+          <th>Price Each</th>
+          <th>Line Total</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody id="orderBody">
+        <!-- Order lines get added here by script.js -->
+      </tbody>
+    </table>
+
+    <div class="totals">
+      <div>Grand Total Shirts: <span id="totalShirts">0</span></div>
+      <div>Grand Total Price: $<span id="totalPrice">0.00</span></div>
+    </div>
+
+    <div class="payment-info">
+      <h2>Payment Instructions</h2>
+      <p>Please send payment using one of the options below:</p>
+      <ul>
+        <li><strong>Zelle:</strong> 2147898868</li>
+        <li><strong>Cash App:</strong> $edisongrant</li>
+      </ul>
+      <p class="payment-note">
+        Please note "T-shirt order" on your payment so we know what it's for.
+      </p>
+    </div>
+
+    <div class="copy-section">
+      <button id="emailBtn" type="button">Email My Order</button>
+      <button id="copyBtn" type="button">Copy Order as Text</button>
+      <p class="copy-hint">
+        "Email My Order" opens your email app with your order pre-filled,
+        addressed to Vontreava1@outlook.com. "Copy Order as Text" copies your
+        order so you can paste it into a text message instead.
+      </p>
+      <textarea id="copyOutput" class="copy-output" readonly rows="10"></textarea>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
